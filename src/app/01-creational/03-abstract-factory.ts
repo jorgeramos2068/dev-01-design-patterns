@@ -1,4 +1,4 @@
-interface Hamburguer {
+interface Hamburger {
   prepare: () => void;
 }
 
@@ -6,15 +6,15 @@ interface Drink {
   pour: () => void;
 }
 
-class ChickenHamburguer implements Hamburguer {
+class ChickenHamburger implements Hamburger {
   public prepare(): void {
-    console.log('Cooking a chicken hamburguer');
+    console.log('Cooking a chicken hamburger');
   }
 }
 
-class BeefHamburguer implements Hamburguer {
+class BeefHamburger implements Hamburger {
   public prepare(): void {
-    console.log('Cooking a beef hamburguer');
+    console.log('Cooking a beef hamburger');
   }
 }
 
@@ -31,13 +31,13 @@ class Soda implements Drink {
 }
 
 interface RestaurantFactory {
-  createHamburguer: () => Hamburguer;
+  createHamburger: () => Hamburger;
   createDrink: () => Drink;
 }
 
 class FastFoodRestaurantFactory implements RestaurantFactory {
-  public createHamburguer = (): Hamburguer => {
-    return new BeefHamburguer();
+  public createHamburger = (): Hamburger => {
+    return new BeefHamburger();
   };
 
   public createDrink = (): Drink => {
@@ -46,8 +46,8 @@ class FastFoodRestaurantFactory implements RestaurantFactory {
 }
 
 class HealthyRestaurantFactory implements RestaurantFactory {
-  public createHamburguer = (): Hamburguer => {
-    return new ChickenHamburguer();
+  public createHamburger = (): Hamburger => {
+    return new ChickenHamburger();
   };
 
   public createDrink = (): Drink => {
@@ -56,7 +56,7 @@ class HealthyRestaurantFactory implements RestaurantFactory {
 }
 
 function main(factory: RestaurantFactory) {
-  const hamburger = factory.createHamburguer();
+  const hamburger = factory.createHamburger();
   const drink = factory.createDrink();
 
   hamburger.prepare();
