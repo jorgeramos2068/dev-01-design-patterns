@@ -1,7 +1,7 @@
-import { COLORS } from '../../helpers/index.ts';
+import prompts from 'prompts';
 
 interface Report {
-  generate(): void;
+  generate: () => void;
 }
 
 class SalesReport implements Report {
@@ -37,9 +37,13 @@ class InventoryReportFactory extends ReportFactory {
   }
 }
 
-function main() {
+async function main() {
   let reportFactory: ReportFactory;
-  const reportType = prompt('What type of report do you need (sales/inventory)?');
+  const { reportType } = await prompts({
+    name: 'reportType',
+    type: 'text',
+    message: 'What type of report do you need (sales/inventory)?',
+  });
   switch (reportType) {
     case 'sales':
       reportFactory = new SalesReportFactory();

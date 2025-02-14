@@ -1,5 +1,7 @@
+import prompts from 'prompts';
+
 interface Hamburger {
-  prepare(): void;
+  prepare: () => void;
 }
 
 class ChickenHamburger implements Hamburger {
@@ -47,9 +49,13 @@ class BeanHamburgerFactory extends HamburgerFactory {
   }
 }
 
-function main() {
+async function main() {
   let restaurant: HamburgerFactory;
-  const burgerType = prompt('What type of hamburger do you want (chicken/beef/bean)?');
+  const { burgerType } = await prompts({
+    name: 'burgerType',
+    type: 'text',
+    message: 'What type of hamburger do you want (chicken/beef/bean)?',
+  });
   switch (burgerType) {
     case 'chicken':
       restaurant = new ChickenHamburgerFactory();

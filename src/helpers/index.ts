@@ -1,2 +1,2 @@
-export * from './colors.ts';
-export * from './sleep.ts';
+export * from './colors';
+export * from './sleep';

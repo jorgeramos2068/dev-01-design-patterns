@@ -1,4 +1,4 @@
-import { COLORS } from '../../helpers/index.ts';
+import { COLORS } from '@/helpers';
 
 class QueryBuilder {
   private table: string;
